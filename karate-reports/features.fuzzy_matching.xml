@@ -1,0 +1,13 @@
+<testsuite failures="0" name="features/fuzzy_matching.feature" skipped="0" tests="2" time="3.340197"><testcase classname="features.fuzzy_matching" name="GET single product and validate with fuzzy match markers" time="1.635795"><system-out>Given url dummyJsonUrl + '/products/1' .................................... passed
+When method get ........................................................... passed
+Then status 200 ........................................................... passed
+And print response ........................................................ passed
+And match response contains ............................................... passed
+</system-out></testcase>
+<testcase classname="features.fuzzy_matching" name="GET all products and validate collection with fuzzy match markers" time="1.704402"><system-out>Given url dummyJsonUrl + '/products' ...................................... passed
+When method get ........................................................... passed
+Then status 200 ........................................................... passed
+And print response ........................................................ passed
+And match each response.products contains ................................. passed
+</system-out></testcase>
+</testsuite>

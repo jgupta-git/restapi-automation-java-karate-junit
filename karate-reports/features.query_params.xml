@@ -1,0 +1,80 @@
+<testsuite failures="0" name="features/query_params.feature" skipped="0" tests="9" time="5.62325"><testcase classname="features.query_params" name="GET products with limit and skip for pagination" time="1.779864"><system-out>Given url dummyJsonUrl + '/products' ...................................... passed
+And param limit = 5 ....................................................... passed
+And param skip = 10 ....................................................... passed
+When method get ........................................................... passed
+Then status 200 ........................................................... passed
+And print 'Request URL:', karate.prevRequest.url .......................... passed
+And print karate.prevRequest.method ....................................... passed
+And print karate.prevRequest.headers ...................................... passed
+And print response ........................................................ passed
+And match response.products == '#[5]' ..................................... passed
+And match response contains { skip: 10, limit: 5 } ........................ passed
+And assert responseTime &lt; 3000 ............................................ passed
+</system-out></testcase>
+<testcase classname="features.query_params" name="GET products with select to return specific fields only" time="1.762772"><system-out>Given url dummyJsonUrl + '/products' ...................................... passed
+And param select = "title,price" .......................................... passed
+When method get ........................................................... passed
+Then status 200 ........................................................... passed
+And print response ........................................................ passed
+And match each response.products == ....................................... passed
+</system-out></testcase>
+<testcase classname="features.query_params" name="GET products by category" time="0.201028"><system-out>Given url dummyJsonUrl + '/products/category/smartphones' ................. passed
+When method get ........................................................... passed
+Then status 200 ........................................................... passed
+And print response ........................................................ passed
+And match each response.products contains ................................. passed
+</system-out></testcase>
+<testcase classname="features.query_params" name="Search products with query parameter" time="0.204261"><system-out>Given url dummyJsonUrl + '/products/search' ............................... passed
+And param q = 'phone' ..................................................... passed
+When method get ........................................................... passed
+Then status 200 ........................................................... passed
+And print 'Request URL:', karate.prevRequest.url .......................... passed
+And match each response.products contains ................................. passed
+And assert response.total &gt; 0 ............................................. passed
+</system-out></testcase>
+<testcase classname="features.query_params" name="GET products with skip beyond total returns empty list" time="0.170983"><system-out>Given url dummyJsonUrl + '/products' ...................................... passed
+And param limit = 5 ....................................................... passed
+And param skip = 9999 ..................................................... passed
+When method get ........................................................... passed
+Then status 200 ........................................................... passed
+And print response ........................................................ passed
+And match response.products == '#[0]' ..................................... passed
+And match response contains { skip: 9999, limit: 0 } ...................... passed
+</system-out></testcase>
+<testcase classname="features.query_params" name="GET products with different pagination parameters" time="0.203616"><system-out>Given url dummyJsonUrl + '/products' ...................................... passed
+And param limit = 3 ....................................................... passed
+And param skip = 0 ........................................................ passed
+When method get ........................................................... passed
+Then status 200 ........................................................... passed
+And print response ........................................................ passed
+And match each response.products contains ................................. passed
+And match response contains { skip: 0, limit: 3 } ......................... passed
+</system-out></testcase>
+<testcase classname="features.query_params" name="GET products with different pagination parameters" time="0.204324"><system-out>Given url dummyJsonUrl + '/products' ...................................... passed
+And param limit = 5 ....................................................... passed
+And param skip = 10 ....................................................... passed
+When method get ........................................................... passed
+Then status 200 ........................................................... passed
+And print response ........................................................ passed
+And match each response.products contains ................................. passed
+And match response contains { skip: 10, limit: 5 } ........................ passed
+</system-out></testcase>
+<testcase classname="features.query_params" name="GET products with different pagination parameters" time="0.559234"><system-out>Given url dummyJsonUrl + '/products' ...................................... passed
+And param limit = 10 ...................................................... passed
+And param skip = 20 ....................................................... passed
+When method get ........................................................... passed
+Then status 200 ........................................................... passed
+And print response ........................................................ passed
+And match each response.products contains ................................. passed
+And match response contains { skip: 20, limit: 10 } ....................... passed
+</system-out></testcase>
+<testcase classname="features.query_params" name="GET products with different pagination parameters" time="0.537167"><system-out>Given url dummyJsonUrl + '/products' ...................................... passed
+And param limit = 1 ....................................................... passed
+And param skip = 50 ....................................................... passed
+When method get ........................................................... passed
+Then status 200 ........................................................... passed
+And print response ........................................................ passed
+And match each response.products contains ................................. passed
+And match response contains { skip: 50, limit: 1 } ........................ passed
+</system-out></testcase>
+</testsuite>

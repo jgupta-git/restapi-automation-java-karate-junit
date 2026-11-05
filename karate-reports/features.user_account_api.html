@@ -1,0 +1,2068 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link rel="stylesheet" href="res/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="res/karate-report.css" type="text/css"/>
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <script type="text/javascript" src="res/jquery.min.js"></script>
+    <script type="text/javascript" src="res/jquery.tablesorter.min.js"></script>
+    <script type="text/javascript" src="res/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="res/bootstrap.min.js"></script>
+    <script type="text/javascript" src="res/karate-report.js"></script>
+    <script type="text/javascript" src="res/Resemble.js"></script>
+    <script>
+!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
+  api_host:'https://app.posthog.com',
+  persistence:'localStorage',
+  autocapture:false,
+  capture_pageview:false,
+  api_transport:'sendBeacon',
+  loaded: function(posthog) { 
+    posthog.capture("report_feature",{distinct_id:"3cfb77e9-b5d6-4f25-a166-cc3974976bfc",karate_version:"1.5.2",karate_meta:null});
+  }
+});
+</script>
+
+    <title>features.user_account_api</title>
+  </head>
+  <body>
+    <div id="root-container">
+      <div id="leftnav">
+        
+        <div>
+  <div class="nav-logo">
+    <a href="https://karatelabs.io">
+      <img src="karate-labs-logo-ring.svg" alt="Karate Labs"/>
+    </a>
+    <div class="nav-count">
+      <div id="nav-pass" class="bg-success">5</div>
+      <div id="nav-fail" class="bg-danger">0</div>
+    </div>
+  </div>
+  <div id="nav-env">
+    <div></div>
+  </div>
+  <div id="nav-type">
+    <div>Scenarios</div>
+  </div>
+  <div id="nav-date">
+    <div>2026-11-04 10:06:19 PM</div>
+  </div>
+</div>
+
+        <div class="nav-container">
+          <div class="nav-item passed">
+            <a href="#[1:32]"><span>[1:32]</span> <span>POST to create a new user account</span></a>
+          </div>
+          <div class="nav-item passed">
+            <a href="#[2:46]"><span>[2:46]</span> <span>GET user account detail by email</span></a>
+          </div>
+          <div class="nav-item passed">
+            <a href="#[3:56]"><span>[3:56]</span> <span>PUT to update an existing user account</span></a>
+          </div>
+          <div class="nav-item passed">
+            <a href="#[4:78]"><span>[4:78]</span> <span>DELETE to remove a user account</span></a>
+          </div>
+          <div class="nav-item passed">
+            <a href="#[5:89]"><span>[5:89]</span> <span>GET user account after deletion returns not found</span></a>
+          </div>
+        </div>
+      </div>
+      <div id="content">
+        <div class="page-heading alert alert-primary">
+          <a href="karate-summary.html">Summary</a><span class="feature-label">|</span>
+          <a href="karate-tags.html">Tags</a><span class="feature-label">|</span>
+          <span class="feature-label">Feature:</span>
+          <span class="feature-path">features/user_account_api.feature</span><span class="feature-label">|</span>
+          <span class="feature-name">User Account API</span>
+          <span class="feature-description">As a QA engineer
+  I want to verify the CRUD operations for user accounts
+  So that account creation, retrieval, update, and deletion work correctly</span>
+        </div>
+        <div class="scenario">
+          <div class="scenario-heading" id="[1:32]">
+            <div class="heading-container">
+              <div class="scenario-tags">
+                <a class="badge badge-primary" href="karate-tags.html">functional</a><a class="badge badge-primary" href="karate-tags.html">smoke</a><a class="badge badge-primary" href="karate-tags.html">parallel=false</a><a class="badge badge-primary" href="karate-tags.html">positive</a><a class="badge badge-primary" href="karate-tags.html">Scenario-1</a><a class="badge badge-primary" href="karate-tags.html">account</a>
+              </div>
+              <div class="scenario-keyword">
+                Scenario: <span>[1:32]</span>
+                <span class="scenario-name">POST to create a new user account</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="scenario-time passed">
+              <span>ms:</span>&nbsp;<span>1765</span>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-container" id="[1:32]bg">
+              <div class="step-ref bg-step">&gt;&gt;</div>
+              <div class="step-cell passed">Background:</div>
+            </div>
+            <div class="time-cell passed"></div>
+          </div>
+          <div data-parent="[1:32]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.8">
+      <div class="step-ref bg-step">8</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>def user =</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.8">{
+    name: &#39;TestUser&#39;,
+    email: &#39;jg_qa_create@testmail.com&#39;,
+    password: &#39;Pass1234!&#39;,
+    title: &#39;Mr&#39;,
+    birth_date: &#39;15&#39;,
+    birth_month: &#39;6&#39;,
+    birth_year: &#39;1990&#39;,
+    firstname: &#39;Test&#39;,
+    lastname: &#39;User&#39;,
+    company: &#39;TestCorp&#39;,
+    address1: &#39;123 Test Street&#39;,
+    address2: &#39;Suite 100&#39;,
+    country: &#39;United States&#39;,
+    zipcode: &#39;10001&#39;,
+    state: &#39;New York&#39;,
+    city: &#39;New York&#39;,
+    mobile_number: &#39;5551234567&#39;
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.33">
+      <div class="step-ref passed">33</div>
+      
+      <div class="step-cell passed">
+        <span>Given</span>&nbsp;<span>url aeUrl + &#39;deleteAccount&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.34">
+      <div class="step-ref passed">34</div>
+      
+      <div class="step-cell passed">
+        <span>And</span>&nbsp;<span>form field email = user.email</span>
+      </div>
+    </div>
+    <div class="time-cell passed">248</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.35">
+      <div class="step-ref passed">35</div>
+      
+      <div class="step-cell passed">
+        <span>And</span>&nbsp;<span>form field password = user.password</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.36">
+      <div class="step-ref passed">36</div>
+      
+      <div class="step-cell passed">
+        <span>When</span>&nbsp;<span>method delete</span>
+      </div>
+    </div>
+    <div class="time-cell passed">804</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.36">22:06:13.559 request:
+1 &gt; DELETE https://automationexercise.com/api/deleteAccount
+1 &gt; Content-Type: application/x-www-form-urlencoded
+1 &gt; Content-Length: 54
+1 &gt; Host: automationexercise.com
+1 &gt; Connection: Keep-Alive
+1 &gt; User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.12.1)
+1 &gt; Accept-Encoding: gzip,deflate
+email=jg_qa_create%40testmail.com&amp;password=Pass1234%21
+
+22:06:14.346 response time in milliseconds: 783
+1 &lt; 200
+1 &lt; Date: Thu, 05 Nov 2026 03:06:14 GMT
+1 &lt; Content-Type: text/html; charset=utf-8
+1 &lt; Transfer-Encoding: chunked
+1 &lt; Connection: keep-alive
+1 &lt; vary: Accept,Cookie
+1 &lt; referrer-policy: same-origin
+1 &lt; x-frame-options: DENY
+1 &lt; x-content-type-options: nosniff
+1 &lt; allow: DELETE, OPTIONS
+1 &lt; x-powered-by: Phusion Passenger(R) 6.2.1
+1 &lt; status: 200 OK
+1 &lt; Server: cloudflare
+1 &lt; cf-cache-status: DYNAMIC
+1 &lt; Nel: {&quot;report_to&quot;:&quot;cf-nel&quot;,&quot;success_fraction&quot;:0.0,&quot;max_age&quot;:604800}
+1 &lt; Server-Timing: cfCacheStatus;desc=&quot;DYNAMIC&quot;
+1 &lt; Server-Timing: cfEdge;dur=13,cfOrigin;dur=600
+1 &lt; Report-To: {&quot;group&quot;:&quot;cf-nel&quot;,&quot;max_age&quot;:604800,&quot;endpoints&quot;:[{&quot;url&quot;:&quot;https://a.nel.cloudflare.com/report/v4?s=BhdEgkA5DWvCpkNqYqnacx5OJSIV2HRclVJVxEbYLgb2iWEdqPavlMjs%2B1A9MtJNbOAsL2uf9JBiUS5UsZG%2F1C2ye5zsASL8NtBoHRM7De9b4VMnTHo4eiHB26F08lPWDWXEOoOLA1W6&quot;}]}
+1 &lt; CF-RAY: a558a42b6ac60869-BOS
+1 &lt; alt-svc: h3=&quot;:443&quot;; ma=86400
+{&quot;responseCode&quot;: 404, &quot;message&quot;: &quot;Account not found!&quot;}
+
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.37">
+      <div class="step-ref passed">37</div>
+      
+      <div class="step-cell passed">
+        <span>Given</span>&nbsp;<span>url aeUrl +&#39;createAccount&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.38">
+      <div class="step-ref passed">38</div>
+      
+      <div class="step-cell passed">
+        <span>And</span>&nbsp;<span>form fields user</span>
+      </div>
+    </div>
+    <div class="time-cell passed">2</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.39">
+      <div class="step-ref passed">39</div>
+      
+      <div class="step-cell passed">
+        <span>When</span>&nbsp;<span>method post</span>
+      </div>
+    </div>
+    <div class="time-cell passed">701</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.39">22:06:14.355 request:
+2 &gt; POST https://automationexercise.com/api/createAccount
+2 &gt; Content-Type: application/x-www-form-urlencoded
+2 &gt; Content-Length: 301
+2 &gt; Host: automationexercise.com
+2 &gt; Connection: Keep-Alive
+2 &gt; User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.12.1)
+2 &gt; Accept-Encoding: gzip,deflate
+name=TestUser&amp;email=jg_qa_create%40testmail.com&amp;password=Pass1234%21&amp;title=Mr&amp;birth_date=15&amp;birth_month=6&amp;birth_year=1990&amp;firstname=Test&amp;lastname=User&amp;company=TestCorp&amp;address1=123+Test+Street&amp;address2=Suite+100&amp;country=United+States&amp;zipcode=10001&amp;state=New+York&amp;city=New+York&amp;mobile_number=5551234567
+
+22:06:15.052 response time in milliseconds: 692
+2 &lt; 200
+2 &lt; Date: Thu, 05 Nov 2026 03:06:15 GMT
+2 &lt; Content-Type: text/html; charset=utf-8
+2 &lt; Content-Length: 49
+2 &lt; Connection: keep-alive
+2 &lt; vary: Accept,Cookie
+2 &lt; referrer-policy: same-origin
+2 &lt; x-frame-options: DENY
+2 &lt; x-content-type-options: nosniff
+2 &lt; allow: POST, OPTIONS
+2 &lt; x-powered-by: Phusion Passenger(R) 6.2.1
+2 &lt; status: 200 OK
+2 &lt; Server: cloudflare
+2 &lt; cf-cache-status: DYNAMIC
+2 &lt; Nel: {&quot;report_to&quot;:&quot;cf-nel&quot;,&quot;success_fraction&quot;:0.0,&quot;max_age&quot;:604800}
+2 &lt; Server-Timing: cfCacheStatus;desc=&quot;DYNAMIC&quot;
+2 &lt; Server-Timing: cfEdge;dur=12,cfOrigin;dur=521
+2 &lt; Report-To: {&quot;group&quot;:&quot;cf-nel&quot;,&quot;max_age&quot;:604800,&quot;endpoints&quot;:[{&quot;url&quot;:&quot;https://a.nel.cloudflare.com/report/v4?s=m6gnR04CHY098P34UJZZ2wao68RDPrOqXPoKtu0HIJYyn0gU70u5RZas%2Bp1PX6TO7kdlIkFp3irHWz21JoTfh%2FCdkWn02A7HhNIvw0YDdPn3MCA6rqoY61UYr5rUUE6QnNAjCOQK3X%2FV&quot;}]}
+2 &lt; CF-RAY: a558a4306906ae2c-BOS
+2 &lt; alt-svc: h3=&quot;:443&quot;; ma=86400
+{&quot;responseCode&quot;: 201, &quot;message&quot;: &quot;User created!&quot;}
+
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.40">
+      <div class="step-ref passed">40</div>
+      
+      <div class="step-cell passed">
+        <span>Then</span>&nbsp;<span>status 200</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.41">
+      <div class="step-ref passed">41</div>
+      
+      <div class="step-cell passed">
+        <span>And</span>&nbsp;<span>print response</span>
+      </div>
+    </div>
+    <div class="time-cell passed">2</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.41">22:06:15.052 [print] {
+  &quot;responseCode&quot;: 201,
+  &quot;message&quot;: &quot;User created!&quot;
+}
+ 
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.42">
+      <div class="step-ref passed">42</div>
+      
+      <div class="step-cell passed">
+        <span>And</span>&nbsp;<span>match response.responseCode == 201</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.43">
+      <div class="step-ref passed">43</div>
+      
+      <div class="step-cell passed">
+        <span>And</span>&nbsp;<span>match response.message == &quot;User created!&quot;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+        </div>
+        <div class="scenario">
+          <div class="scenario-heading" id="[2:46]">
+            <div class="heading-container">
+              <div class="scenario-tags">
+                <a class="badge badge-primary" href="karate-tags.html">functional</a><a class="badge badge-primary" href="karate-tags.html">parallel=false</a><a class="badge badge-primary" href="karate-tags.html">positive</a><a class="badge badge-primary" href="karate-tags.html">Scenario-2</a><a class="badge badge-primary" href="karate-tags.html">account</a>
+              </div>
+              <div class="scenario-keyword">
+                Scenario: <span>[2:46]</span>
+                <span class="scenario-name">GET user account detail by email</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="scenario-time passed">
+              <span>ms:</span>&nbsp;<span>491</span>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-container" id="[2:46]bg">
+              <div class="step-ref bg-step">&gt;&gt;</div>
+              <div class="step-cell passed">Background:</div>
+            </div>
+            <div class="time-cell passed"></div>
+          </div>
+          <div data-parent="[2:46]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.8">
+      <div class="step-ref bg-step">8</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>def user =</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.8">{
+    name: &#39;TestUser&#39;,
+    email: &#39;jg_qa_create@testmail.com&#39;,
+    password: &#39;Pass1234!&#39;,
+    title: &#39;Mr&#39;,
+    birth_date: &#39;15&#39;,
+    birth_month: &#39;6&#39;,
+    birth_year: &#39;1990&#39;,
+    firstname: &#39;Test&#39;,
+    lastname: &#39;User&#39;,
+    company: &#39;TestCorp&#39;,
+    address1: &#39;123 Test Street&#39;,
+    address2: &#39;Suite 100&#39;,
+    country: &#39;United States&#39;,
+    zipcode: &#39;10001&#39;,
+    state: &#39;New York&#39;,
+    city: &#39;New York&#39;,
+    mobile_number: &#39;5551234567&#39;
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.47">
+      <div class="step-ref passed">47</div>
+      
+      <div class="step-cell passed">
+        <span>Given</span>&nbsp;<span>url aeUrl + &#39;getUserDetailByEmail&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.48">
+      <div class="step-ref passed">48</div>
+      
+      <div class="step-cell passed">
+        <span>And</span>&nbsp;<span>param email = user.email</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.49">
+      <div class="step-ref passed">49</div>
+      
+      <div class="step-cell passed">
+        <span>When</span>&nbsp;<span>method get</span>
+      </div>
+    </div>
+    <div class="time-cell passed">485</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.49">22:06:15.067 request:
+1 &gt; GET https://automationexercise.com/api/getUserDetailByEmail?email=jg_qa_create%40testmail.com
+1 &gt; Host: automationexercise.com
+1 &gt; Connection: Keep-Alive
+1 &gt; User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.12.1)
+1 &gt; Accept-Encoding: gzip,deflate
+
+
+22:06:15.549 response time in milliseconds: 482
+1 &lt; 200
+1 &lt; Date: Thu, 05 Nov 2026 03:06:15 GMT
+1 &lt; Content-Type: text/html; charset=utf-8
+1 &lt; Transfer-Encoding: chunked
+1 &lt; Connection: keep-alive
+1 &lt; vary: Accept,Cookie,Accept-Encoding
+1 &lt; referrer-policy: same-origin
+1 &lt; x-frame-options: DENY
+1 &lt; x-content-type-options: nosniff
+1 &lt; allow: OPTIONS, PUT, POST, GET, DELETE
+1 &lt; x-powered-by: Phusion Passenger(R) 6.2.1
+1 &lt; status: 200 OK
+1 &lt; Report-To: {&quot;group&quot;:&quot;cf-nel&quot;,&quot;max_age&quot;:604800,&quot;endpoints&quot;:[{&quot;url&quot;:&quot;https://a.nel.cloudflare.com/report/v4?s=NKTpmSCGQZa4FwCEL%2BgF6jXN6HdHN3WWmk86nE7NisQVMGwATHERPLqj3r%2FFBOM50OGzTUuDx71FVtBEvXJ2vqDDVpOZgO4yb4ojaEtfmPgg%2Fn8SzGJiVEHwutL77VVHKMwRjcMTz7Nr&quot;}]}
+1 &lt; Server: cloudflare
+1 &lt; cf-cache-status: DYNAMIC
+1 &lt; Nel: {&quot;report_to&quot;:&quot;cf-nel&quot;,&quot;success_fraction&quot;:0.0,&quot;max_age&quot;:604800}
+1 &lt; Server-Timing: cfCacheStatus;desc=&quot;DYNAMIC&quot;
+1 &lt; Server-Timing: cfEdge;dur=13,cfOrigin;dur=403
+1 &lt; CF-RAY: a558a434ca5bae27-BOS
+1 &lt; alt-svc: h3=&quot;:443&quot;; ma=86400
+{&quot;responseCode&quot;: 200, &quot;user&quot;: {&quot;id&quot;: 3176920, &quot;name&quot;: &quot;TestUser&quot;, &quot;email&quot;: &quot;jg_qa_create@testmail.com&quot;, &quot;title&quot;: &quot;Mr&quot;, &quot;birth_day&quot;: &quot;15&quot;, &quot;birth_month&quot;: &quot;6&quot;, &quot;birth_year&quot;: &quot;1990&quot;, &quot;first_name&quot;: &quot;Test&quot;, &quot;last_name&quot;: &quot;User&quot;, &quot;company&quot;: &quot;TestCorp&quot;, &quot;address1&quot;: &quot;123 Test Street&quot;, &quot;address2&quot;: &quot;Suite 100&quot;, &quot;country&quot;: &quot;United States&quot;, &quot;state&quot;: &quot;New York&quot;, &quot;city&quot;: &quot;New York&quot;, &quot;zipcode&quot;: &quot;10001&quot;}}
+
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.50">
+      <div class="step-ref passed">50</div>
+      
+      <div class="step-cell passed">
+        <span>Then</span>&nbsp;<span>status 200</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.51">
+      <div class="step-ref passed">51</div>
+      
+      <div class="step-cell passed">
+        <span>And</span>&nbsp;<span>print response</span>
+      </div>
+    </div>
+    <div class="time-cell passed">2</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.51">22:06:15.549 [print] {
+  &quot;responseCode&quot;: 200,
+  &quot;user&quot;: {
+    &quot;id&quot;: 3176920,
+    &quot;name&quot;: &quot;TestUser&quot;,
+    &quot;email&quot;: &quot;jg_qa_create@testmail.com&quot;,
+    &quot;title&quot;: &quot;Mr&quot;,
+    &quot;birth_day&quot;: &quot;15&quot;,
+    &quot;birth_month&quot;: &quot;6&quot;,
+    &quot;birth_year&quot;: &quot;1990&quot;,
+    &quot;first_name&quot;: &quot;Test&quot;,
+    &quot;last_name&quot;: &quot;User&quot;,
+    &quot;company&quot;: &quot;TestCorp&quot;,
+    &quot;address1&quot;: &quot;123 Test Street&quot;,
+    &quot;address2&quot;: &quot;Suite 100&quot;,
+    &quot;country&quot;: &quot;United States&quot;,
+    &quot;state&quot;: &quot;New York&quot;,
+    &quot;city&quot;: &quot;New York&quot;,
+    &quot;zipcode&quot;: &quot;10001&quot;
+  }
+}
+ 
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.52">
+      <div class="step-ref passed">52</div>
+      
+      <div class="step-cell passed">
+        <span>And</span>&nbsp;<span>match response.responseCode == 200</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.53">
+      <div class="step-ref passed">53</div>
+      
+      <div class="step-cell passed">
+        <span>And</span>&nbsp;<span>match response.user.email == &quot;jg_qa_create@testmail.com&quot;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+        </div>
+        <div class="scenario">
+          <div class="scenario-heading" id="[3:56]">
+            <div class="heading-container">
+              <div class="scenario-tags">
+                <a class="badge badge-primary" href="karate-tags.html">functional</a><a class="badge badge-primary" href="karate-tags.html">parallel=false</a><a class="badge badge-primary" href="karate-tags.html">positive</a><a class="badge badge-primary" href="karate-tags.html">account</a><a class="badge badge-primary" href="karate-tags.html">Scenario-3</a>
+              </div>
+              <div class="scenario-keyword">
+                Scenario: <span>[3:56]</span>
+                <span class="scenario-name">PUT to update an existing user account</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="scenario-time passed">
+              <span>ms:</span>&nbsp;<span>2149</span>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-container" id="[3:56]bg">
+              <div class="step-ref bg-step">&gt;&gt;</div>
+              <div class="step-cell passed">Background:</div>
+            </div>
+            <div class="time-cell passed"></div>
+          </div>
+          <div data-parent="[3:56]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.8">
+      <div class="step-ref bg-step">8</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>def user =</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.8">{
+    name: &#39;TestUser&#39;,
+    email: &#39;jg_qa_create@testmail.com&#39;,
+    password: &#39;Pass1234!&#39;,
+    title: &#39;Mr&#39;,
+    birth_date: &#39;15&#39;,
+    birth_month: &#39;6&#39;,
+    birth_year: &#39;1990&#39;,
+    firstname: &#39;Test&#39;,
+    lastname: &#39;User&#39;,
+    company: &#39;TestCorp&#39;,
+    address1: &#39;123 Test Street&#39;,
+    address2: &#39;Suite 100&#39;,
+    country: &#39;United States&#39;,
+    zipcode: &#39;10001&#39;,
+    state: &#39;New York&#39;,
+    city: &#39;New York&#39;,
+    mobile_number: &#39;5551234567&#39;
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.57">
+      <div class="step-ref passed">57</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>set user</span>
+      </div>
+    </div>
+    <div class="time-cell passed">8</div>
+  </div>
+
+  <table>
+    <tr class="tr">      
+      <td class="td">path</td>      
+      <td class="td">value</td>
+    </tr>
+    <tr class="tr">      
+      <td class="td">name</td>      
+      <td class="td">&#39;UpdatedUser&#39;</td>
+    </tr>
+    <tr class="tr">      
+      <td class="td">firstname</td>      
+      <td class="td">&#39;Updated&#39;</td>
+    </tr>
+    <tr class="tr">      
+      <td class="td">company</td>      
+      <td class="td">&#39;NewCorp&#39;</td>
+    </tr>     
+  </table> 
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.62">
+      <div class="step-ref passed">62</div>
+      
+      <div class="step-cell passed">
+        <span>Given</span>&nbsp;<span>url aeUrl + &#39;updateAccount&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.63">
+      <div class="step-ref passed">63</div>
+      
+      <div class="step-cell passed">
+        <span>And</span>&nbsp;<span>form fields user</span>
+      </div>
+    </div>
+    <div class="time-cell passed">2</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.64">
+      <div class="step-ref passed">64</div>
+      
+      <div class="step-cell passed">
+        <span>When</span>&nbsp;<span>method put</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1622</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.64">22:06:15.586 request:
+1 &gt; PUT https://automationexercise.com/api/updateAccount
+1 &gt; Content-Type: application/x-www-form-urlencoded
+1 &gt; Content-Length: 306
+1 &gt; Host: automationexercise.com
+1 &gt; Connection: Keep-Alive
+1 &gt; User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.12.1)
+1 &gt; Accept-Encoding: gzip,deflate
+name=UpdatedUser&amp;email=jg_qa_create%40testmail.com&amp;password=Pass1234%21&amp;title=Mr&amp;birth_date=15&amp;birth_month=6&amp;birth_year=1990&amp;firstname=Updated&amp;lastname=User&amp;company=NewCorp&amp;address1=123+Test+Street&amp;address2=Suite+100&amp;country=United+States&amp;zipcode=10001&amp;state=New+York&amp;city=New+York&amp;mobile_number=5551234567
+
+22:06:17.202 response time in milliseconds: 1611
+1 &lt; 200
+1 &lt; Date: Thu, 05 Nov 2026 03:06:17 GMT
+1 &lt; Content-Type: text/html; charset=utf-8
+1 &lt; Content-Length: 49
+1 &lt; Connection: keep-alive
+1 &lt; vary: Accept,Cookie
+1 &lt; referrer-policy: same-origin
+1 &lt; x-frame-options: DENY
+1 &lt; x-content-type-options: nosniff
+1 &lt; allow: PUT, OPTIONS
+1 &lt; x-powered-by: Phusion Passenger(R) 6.2.1
+1 &lt; status: 200 OK
+1 &lt; Server: cloudflare
+1 &lt; cf-cache-status: DYNAMIC
+1 &lt; Nel: {&quot;report_to&quot;:&quot;cf-nel&quot;,&quot;success_fraction&quot;:0.0,&quot;max_age&quot;:604800}
+1 &lt; Server-Timing: cfCacheStatus;desc=&quot;DYNAMIC&quot;
+1 &lt; Server-Timing: cfEdge;dur=18,cfOrigin;dur=1494
+1 &lt; Report-To: {&quot;group&quot;:&quot;cf-nel&quot;,&quot;max_age&quot;:604800,&quot;endpoints&quot;:[{&quot;url&quot;:&quot;https://a.nel.cloudflare.com/report/v4?s=8pHYQujMYha9Hyg87NXrNVqfMGMG9q87t4WYcP0XpHeGWCdJaR1YPb%2BmLBqUit%2BwF5W6S83q3Z2QMu8E8kznEBckaoZ91bhIBFj7jprvhSlmkBOxgsJgpbIsYyqhu8kNcl9j4oVwdwR9&quot;}]}
+1 &lt; CF-RAY: a558a438097b9008-BOS
+1 &lt; alt-svc: h3=&quot;:443&quot;; ma=86400
+{&quot;responseCode&quot;: 200, &quot;message&quot;: &quot;User updated!&quot;}
+
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.65">
+      <div class="step-ref passed">65</div>
+      
+      <div class="step-cell passed">
+        <span>Then</span>&nbsp;<span>status 200</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.66">
+      <div class="step-ref passed">66</div>
+      
+      <div class="step-cell passed">
+        <span>And</span>&nbsp;<span>print response</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.66">22:06:17.202 [print] {
+  &quot;responseCode&quot;: 200,
+  &quot;message&quot;: &quot;User updated!&quot;
+}
+ 
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.67">
+      <div class="step-ref passed">67</div>
+      
+      <div class="step-cell passed">
+        <span>And</span>&nbsp;<span>match response.responseCode == 200</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.68">
+      <div class="step-ref passed">68</div>
+      
+      <div class="step-cell passed">
+        <span>And</span>&nbsp;<span>match response.message == &quot;User updated!&quot;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  <div class="step-row">
+    <div class="step-container">
+      <div class="step-ref passed"></div>
+      
+      <div class="step-cell comment"># check that user values were updated succesfully</div>
+    </div>
+    <div class="time-cell comment"></div>            
+  </div>
+
+  <div class="step-row">
+    <div class="step-container" id="0.70">
+      <div class="step-ref passed">70</div>
+      
+      <div class="step-cell passed">
+        <span>Given</span>&nbsp;<span>url aeUrl + &#39;getUserDetailByEmail&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.71">
+      <div class="step-ref passed">71</div>
+      
+      <div class="step-cell passed">
+        <span>And</span>&nbsp;<span>param email = user.email</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.72">
+      <div class="step-ref passed">72</div>
+      
+      <div class="step-cell passed">
+        <span>When</span>&nbsp;<span>method get</span>
+      </div>
+    </div>
+    <div class="time-cell passed">508</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.72">22:06:17.202 request:
+2 &gt; GET https://automationexercise.com/api/getUserDetailByEmail?email=jg_qa_create%40testmail.com
+2 &gt; Host: automationexercise.com
+2 &gt; Connection: Keep-Alive
+2 &gt; User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.12.1)
+2 &gt; Accept-Encoding: gzip,deflate
+
+
+22:06:17.713 response time in milliseconds: 511
+2 &lt; 200
+2 &lt; Date: Thu, 05 Nov 2026 03:06:17 GMT
+2 &lt; Content-Type: text/html; charset=utf-8
+2 &lt; Transfer-Encoding: chunked
+2 &lt; Connection: keep-alive
+2 &lt; vary: Accept,Cookie,Accept-Encoding
+2 &lt; referrer-policy: same-origin
+2 &lt; x-frame-options: DENY
+2 &lt; x-content-type-options: nosniff
+2 &lt; allow: PUT, DELETE, OPTIONS, POST, GET
+2 &lt; x-powered-by: Phusion Passenger(R) 6.2.1
+2 &lt; status: 200 OK
+2 &lt; Report-To: {&quot;group&quot;:&quot;cf-nel&quot;,&quot;max_age&quot;:604800,&quot;endpoints&quot;:[{&quot;url&quot;:&quot;https://a.nel.cloudflare.com/report/v4?s=dJDnuEHugyvmZVg%2Bsq0C9Z0y2LwWl4p5scicQuQuVVxdhxyazPtO8sETJYFaJFz1K8RuFgzPtjkVWDTjPMcc5JqusPU%2BgxYxdsLq%2FOQInSCj1DIqMdVu9NDiTRLNlV8hdHjpceefybhl&quot;}]}
+2 &lt; Server: cloudflare
+2 &lt; cf-cache-status: DYNAMIC
+2 &lt; Nel: {&quot;report_to&quot;:&quot;cf-nel&quot;,&quot;success_fraction&quot;:0.0,&quot;max_age&quot;:604800}
+2 &lt; Server-Timing: cfCacheStatus;desc=&quot;DYNAMIC&quot;
+2 &lt; Server-Timing: cfEdge;dur=11,cfOrigin;dur=353
+2 &lt; CF-RAY: a558a4425c131b5e-BOS
+2 &lt; alt-svc: h3=&quot;:443&quot;; ma=86400
+{&quot;responseCode&quot;: 200, &quot;user&quot;: {&quot;id&quot;: 3176920, &quot;name&quot;: &quot;UpdatedUser&quot;, &quot;email&quot;: &quot;jg_qa_create@testmail.com&quot;, &quot;title&quot;: &quot;Mr&quot;, &quot;birth_day&quot;: &quot;15&quot;, &quot;birth_month&quot;: &quot;6&quot;, &quot;birth_year&quot;: &quot;1990&quot;, &quot;first_name&quot;: &quot;Updated&quot;, &quot;last_name&quot;: &quot;User&quot;, &quot;company&quot;: &quot;NewCorp&quot;, &quot;address1&quot;: &quot;123 Test Street&quot;, &quot;address2&quot;: &quot;Suite 100&quot;, &quot;country&quot;: &quot;United States&quot;, &quot;state&quot;: &quot;New York&quot;, &quot;city&quot;: &quot;New York&quot;, &quot;zipcode&quot;: &quot;10001&quot;}}
+
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.73">
+      <div class="step-ref passed">73</div>
+      
+      <div class="step-cell passed">
+        <span>Then</span>&nbsp;<span>status 200</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.74">
+      <div class="step-ref passed">74</div>
+      
+      <div class="step-cell passed">
+        <span>And</span>&nbsp;<span>print response</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.74">22:06:17.716 [print] {
+  &quot;responseCode&quot;: 200,
+  &quot;user&quot;: {
+    &quot;id&quot;: 3176920,
+    &quot;name&quot;: &quot;UpdatedUser&quot;,
+    &quot;email&quot;: &quot;jg_qa_create@testmail.com&quot;,
+    &quot;title&quot;: &quot;Mr&quot;,
+    &quot;birth_day&quot;: &quot;15&quot;,
+    &quot;birth_month&quot;: &quot;6&quot;,
+    &quot;birth_year&quot;: &quot;1990&quot;,
+    &quot;first_name&quot;: &quot;Updated&quot;,
+    &quot;last_name&quot;: &quot;User&quot;,
+    &quot;company&quot;: &quot;NewCorp&quot;,
+    &quot;address1&quot;: &quot;123 Test Street&quot;,
+    &quot;address2&quot;: &quot;Suite 100&quot;,
+    &quot;country&quot;: &quot;United States&quot;,
+    &quot;state&quot;: &quot;New York&quot;,
+    &quot;city&quot;: &quot;New York&quot;,
+    &quot;zipcode&quot;: &quot;10001&quot;
+  }
+}
+ 
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.75">
+      <div class="step-ref passed">75</div>
+      
+      <div class="step-cell passed">
+        <span>And</span>&nbsp;<span>match response.user contains { name: &#39;UpdatedUser&#39;, company: &#39;NewCorp&#39; }</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+        </div>
+        <div class="scenario">
+          <div class="scenario-heading" id="[4:78]">
+            <div class="heading-container">
+              <div class="scenario-tags">
+                <a class="badge badge-primary" href="karate-tags.html">functional</a><a class="badge badge-primary" href="karate-tags.html">parallel=false</a><a class="badge badge-primary" href="karate-tags.html">positive</a><a class="badge badge-primary" href="karate-tags.html">account</a><a class="badge badge-primary" href="karate-tags.html">Scenario-4</a>
+              </div>
+              <div class="scenario-keyword">
+                Scenario: <span>[4:78]</span>
+                <span class="scenario-name">DELETE to remove a user account</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="scenario-time passed">
+              <span>ms:</span>&nbsp;<span>820</span>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-container" id="[4:78]bg">
+              <div class="step-ref bg-step">&gt;&gt;</div>
+              <div class="step-cell passed">Background:</div>
+            </div>
+            <div class="time-cell passed"></div>
+          </div>
+          <div data-parent="[4:78]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.8">
+      <div class="step-ref bg-step">8</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>def user =</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.8">{
+    name: &#39;TestUser&#39;,
+    email: &#39;jg_qa_create@testmail.com&#39;,
+    password: &#39;Pass1234!&#39;,
+    title: &#39;Mr&#39;,
+    birth_date: &#39;15&#39;,
+    birth_month: &#39;6&#39;,
+    birth_year: &#39;1990&#39;,
+    firstname: &#39;Test&#39;,
+    lastname: &#39;User&#39;,
+    company: &#39;TestCorp&#39;,
+    address1: &#39;123 Test Street&#39;,
+    address2: &#39;Suite 100&#39;,
+    country: &#39;United States&#39;,
+    zipcode: &#39;10001&#39;,
+    state: &#39;New York&#39;,
+    city: &#39;New York&#39;,
+    mobile_number: &#39;5551234567&#39;
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.79">
+      <div class="step-ref passed">79</div>
+      
+      <div class="step-cell passed">
+        <span>Given</span>&nbsp;<span>url aeUrl + &#39;deleteAccount&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.80">
+      <div class="step-ref passed">80</div>
+      
+      <div class="step-cell passed">
+        <span>And</span>&nbsp;<span>form field email = user.email</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.81">
+      <div class="step-ref passed">81</div>
+      
+      <div class="step-cell passed">
+        <span>And</span>&nbsp;<span>form field password =  user.password</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.82">
+      <div class="step-ref passed">82</div>
+      
+      <div class="step-cell passed">
+        <span>When</span>&nbsp;<span>method delete</span>
+      </div>
+    </div>
+    <div class="time-cell passed">815</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.82">22:06:17.716 request:
+1 &gt; DELETE https://automationexercise.com/api/deleteAccount
+1 &gt; Content-Type: application/x-www-form-urlencoded
+1 &gt; Content-Length: 54
+1 &gt; Host: automationexercise.com
+1 &gt; Connection: Keep-Alive
+1 &gt; User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.12.1)
+1 &gt; Accept-Encoding: gzip,deflate
+email=jg_qa_create%40testmail.com&amp;password=Pass1234%21
+
+22:06:18.534 response time in milliseconds: 818
+1 &lt; 200
+1 &lt; Date: Thu, 05 Nov 2026 03:06:18 GMT
+1 &lt; Content-Type: text/html; charset=utf-8
+1 &lt; Transfer-Encoding: chunked
+1 &lt; Connection: keep-alive
+1 &lt; vary: Accept,Cookie
+1 &lt; referrer-policy: same-origin
+1 &lt; x-frame-options: DENY
+1 &lt; x-content-type-options: nosniff
+1 &lt; allow: DELETE, OPTIONS
+1 &lt; x-powered-by: Phusion Passenger(R) 6.2.1
+1 &lt; status: 200 OK
+1 &lt; Server: cloudflare
+1 &lt; cf-cache-status: DYNAMIC
+1 &lt; Nel: {&quot;report_to&quot;:&quot;cf-nel&quot;,&quot;success_fraction&quot;:0.0,&quot;max_age&quot;:604800}
+1 &lt; Server-Timing: cfCacheStatus;desc=&quot;DYNAMIC&quot;
+1 &lt; Server-Timing: cfEdge;dur=23,cfOrigin;dur=641
+1 &lt; Report-To: {&quot;group&quot;:&quot;cf-nel&quot;,&quot;max_age&quot;:604800,&quot;endpoints&quot;:[{&quot;url&quot;:&quot;https://a.nel.cloudflare.com/report/v4?s=xcdeL7kbUHnAmw9lJLcZgnvDcPBs0zAE%2F1zho72kKIIGkGMCnLFEMfL8ggqBn8%2BcMQ2VIqQau4MsCIt9WZCzdmhRf84pHBiZL8K1ihhYCZzjSmksBQNic0IL2Vn0N%2BcpbMy9pN9oKW9r&quot;}]}
+1 &lt; CF-RAY: a558a4457ffc97e9-BOS
+1 &lt; alt-svc: h3=&quot;:443&quot;; ma=86400
+{&quot;responseCode&quot;: 200, &quot;message&quot;: &quot;Account deleted!&quot;}
+
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.83">
+      <div class="step-ref passed">83</div>
+      
+      <div class="step-cell passed">
+        <span>Then</span>&nbsp;<span>status 200</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.84">
+      <div class="step-ref passed">84</div>
+      
+      <div class="step-cell passed">
+        <span>And</span>&nbsp;<span>print response</span>
+      </div>
+    </div>
+    <div class="time-cell passed">2</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.84">22:06:18.534 [print] {
+  &quot;responseCode&quot;: 200,
+  &quot;message&quot;: &quot;Account deleted!&quot;
+}
+ 
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.85">
+      <div class="step-ref passed">85</div>
+      
+      <div class="step-cell passed">
+        <span>And</span>&nbsp;<span>match response.responseCode == 200</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.86">
+      <div class="step-ref passed">86</div>
+      
+      <div class="step-cell passed">
+        <span>And</span>&nbsp;<span>match response.message == &quot;Account deleted!&quot;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+        </div>
+        <div class="scenario">
+          <div class="scenario-heading" id="[5:89]">
+            <div class="heading-container">
+              <div class="scenario-tags">
+                <a class="badge badge-primary" href="karate-tags.html">Scenario-5</a><a class="badge badge-primary" href="karate-tags.html">functional</a><a class="badge badge-primary" href="karate-tags.html">negative</a><a class="badge badge-primary" href="karate-tags.html">parallel=false</a><a class="badge badge-primary" href="karate-tags.html">account</a>
+              </div>
+              <div class="scenario-keyword">
+                Scenario: <span>[5:89]</span>
+                <span class="scenario-name">GET user account after deletion returns not found</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="scenario-time passed">
+              <span>ms:</span>&nbsp;<span>529</span>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-container" id="[5:89]bg">
+              <div class="step-ref bg-step">&gt;&gt;</div>
+              <div class="step-cell passed">Background:</div>
+            </div>
+            <div class="time-cell passed"></div>
+          </div>
+          <div data-parent="[5:89]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.8">
+      <div class="step-ref bg-step">8</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>def user =</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.8">{
+    name: &#39;TestUser&#39;,
+    email: &#39;jg_qa_create@testmail.com&#39;,
+    password: &#39;Pass1234!&#39;,
+    title: &#39;Mr&#39;,
+    birth_date: &#39;15&#39;,
+    birth_month: &#39;6&#39;,
+    birth_year: &#39;1990&#39;,
+    firstname: &#39;Test&#39;,
+    lastname: &#39;User&#39;,
+    company: &#39;TestCorp&#39;,
+    address1: &#39;123 Test Street&#39;,
+    address2: &#39;Suite 100&#39;,
+    country: &#39;United States&#39;,
+    zipcode: &#39;10001&#39;,
+    state: &#39;New York&#39;,
+    city: &#39;New York&#39;,
+    mobile_number: &#39;5551234567&#39;
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.90">
+      <div class="step-ref passed">90</div>
+      
+      <div class="step-cell passed">
+        <span>Given</span>&nbsp;<span>url aeUrl + &#39;getUserDetailByEmail&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.91">
+      <div class="step-ref passed">91</div>
+      
+      <div class="step-cell passed">
+        <span>And</span>&nbsp;<span>param email = user.email</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.92">
+      <div class="step-ref passed">92</div>
+      
+      <div class="step-cell passed">
+        <span>When</span>&nbsp;<span>method get</span>
+      </div>
+    </div>
+    <div class="time-cell passed">520</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.92">22:06:18.550 request:
+1 &gt; GET https://automationexercise.com/api/getUserDetailByEmail?email=jg_qa_create%40testmail.com
+1 &gt; Host: automationexercise.com
+1 &gt; Connection: Keep-Alive
+1 &gt; User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.12.1)
+1 &gt; Accept-Encoding: gzip,deflate
+
+
+22:06:19.067 response time in milliseconds: 517
+1 &lt; 200
+1 &lt; Date: Thu, 05 Nov 2026 03:06:19 GMT
+1 &lt; Content-Type: text/html; charset=utf-8
+1 &lt; Transfer-Encoding: chunked
+1 &lt; Connection: keep-alive
+1 &lt; vary: Accept,Cookie,Accept-Encoding
+1 &lt; referrer-policy: same-origin
+1 &lt; x-frame-options: DENY
+1 &lt; x-content-type-options: nosniff
+1 &lt; allow: PUT, DELETE, OPTIONS, POST, GET
+1 &lt; x-powered-by: Phusion Passenger(R) 6.2.1
+1 &lt; status: 200 OK
+1 &lt; Report-To: {&quot;group&quot;:&quot;cf-nel&quot;,&quot;max_age&quot;:604800,&quot;endpoints&quot;:[{&quot;url&quot;:&quot;https://a.nel.cloudflare.com/report/v4?s=VVxWZwBl%2Fe5c4tkbkjw5eKZuPbL9oYXmshgMtM3hYSQW9nDVni4jLzn8yCGD7L%2FocgetIod1m4qWIwO4VkSfGp%2F%2FDvTdf7fm%2B1f45Ta2ovKjbOEfOAPJy3rUnH%2Ftu1KQUS1tEnCnwlTo&quot;}]}
+1 &lt; Server: cloudflare
+1 &lt; cf-cache-status: DYNAMIC
+1 &lt; Nel: {&quot;report_to&quot;:&quot;cf-nel&quot;,&quot;success_fraction&quot;:0.0,&quot;max_age&quot;:604800}
+1 &lt; Server-Timing: cfCacheStatus;desc=&quot;DYNAMIC&quot;
+1 &lt; Server-Timing: cfEdge;dur=13,cfOrigin;dur=422
+1 &lt; CF-RAY: a558a44aa984cda3-BOS
+1 &lt; alt-svc: h3=&quot;:443&quot;; ma=86400
+{&quot;responseCode&quot;: 404, &quot;message&quot;: &quot;Account not found with this email, try another email!&quot;}
+
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.93">
+      <div class="step-ref passed">93</div>
+      
+      <div class="step-cell passed">
+        <span>Then</span>&nbsp;<span>status 200</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.94">
+      <div class="step-ref passed">94</div>
+      
+      <div class="step-cell passed">
+        <span>And</span>&nbsp;<span>print response</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.94">22:06:19.076 [print] {
+  &quot;responseCode&quot;: 404,
+  &quot;message&quot;: &quot;Account not found with this email, try another email!&quot;
+}
+ 
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.95">
+      <div class="step-ref passed">95</div>
+      
+      <div class="step-cell passed">
+        <span>And</span>&nbsp;<span>match response.responseCode == 404</span>
+      </div>
+    </div>
+    <div class="time-cell passed">2</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.96">
+      <div class="step-ref passed">96</div>
+      
+      <div class="step-cell passed">
+        <span>And</span>&nbsp;<span>match response.message == &quot;Account not found with this email, try another email!&quot;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">3</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+

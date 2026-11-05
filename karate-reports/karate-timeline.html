@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Karate Timeline</title>
+    <style>
+      body, html { font-family: arial, sans-serif; font-size: 11pt; }
+      #visualization { box-sizing: border-box; width: 100%; height: 300px; }
+      .vis-item.failed { background-color: #F2928C; }
+      .page-heading { padding: 0.5em; margin-bottom: 0.5em; background-color: lightcyan; border: 1px solid gray; }
+    </style>
+    <script src="res/vis.min.js"></script>
+    <link href="res/vis.min.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="page-heading">
+      <a href="karate-summary.html">Summary</a>
+    </div>     
+    <div id="visualization"></div>
+    <script>
+var groups = [{"content":"pool-2-thread-1","id":1},{"content":"pool-2-thread-2","id":2},{"content":"pool-2-thread-3","id":3},{"content":"pool-2-thread-4","id":4}];
+var items = [{"id":1,"group":1,"content":"features/fuzzy_matching[1:9]","start":1793847970120,"end":1793847971847,"title":"features/fuzzy_matching[1:9] 22:06:10.120-22:06:11.847 GET single product and validate with fuzzy match markers"},{"id":2,"group":2,"content":"features/fuzzy_matching[2:30]","start":1793847970120,"end":1793847971917,"title":"features/fuzzy_matching[2:30] 22:06:10.120-22:06:11.917 GET all products and validate collection with fuzzy match markers"},{"id":3,"group":3,"content":"features/query_params[1:8]","start":1793847970120,"end":1793847971987,"title":"features/query_params[1:8] 22:06:10.120-22:06:11.987 GET products with limit and skip for pagination"},{"id":4,"group":4,"content":"features/query_params[2:23]","start":1793847970120,"end":1793847971975,"title":"features/query_params[2:23] 22:06:10.120-22:06:11.975 GET products with select to return specific fields only"},{"id":5,"group":1,"content":"features/query_params[3:39]","start":1793847971857,"end":1793847972060,"title":"features/query_params[3:39] 22:06:11.857-22:06:12.060 GET products by category"},{"id":6,"group":2,"content":"features/query_params[4:61]","start":1793847971918,"end":1793847972121,"title":"features/query_params[4:61] 22:06:11.918-22:06:12.121 Search products with query parameter"},{"id":7,"group":4,"content":"features/query_params[5:85]","start":1793847971978,"end":1793847972153,"title":"features/query_params[5:85] 22:06:11.978-22:06:12.153 GET products with skip beyond total returns empty list"},{"id":8,"group":3,"content":"features/query_params[6.1:122]","start":1793847971999,"end":1793847972201,"title":"features/query_params[6.1:122] 22:06:11.999-22:06:12.201 GET products with different pagination parameters"},{"id":9,"group":1,"content":"features/query_params[6.2:123]","start":1793847972066,"end":1793847972269,"title":"features/query_params[6.2:123] 22:06:12.066-22:06:12.269 GET products with different pagination parameters"},{"id":10,"group":2,"content":"features/query_params[6.3:124]","start":1793847972132,"end":1793847972697,"title":"features/query_params[6.3:124] 22:06:12.132-22:06:12.697 GET products with different pagination parameters"},{"id":11,"group":4,"content":"features/query_params[6.4:125]","start":1793847972156,"end":1793847972694,"title":"features/query_params[6.4:125] 22:06:12.156-22:06:12.694 GET products with different pagination parameters"},{"id":12,"group":3,"content":"features/schema_validation[1:8]","start":1793847972202,"end":1793847972287,"title":"features/schema_validation[1:8] 22:06:12.202-22:06:12.287 GET single product response matches JSON schema"},{"id":13,"group":1,"content":"features/schema_validation[2:18]","start":1793847972272,"end":1793847972371,"title":"features/schema_validation[2:18] 22:06:12.272-22:06:12.371 GET all products list response matches JSON schema"},{"id":14,"group":3,"content":"features/token_auth_api[1:11]","start":1793847972293,"end":1793847973289,"title":"features/token_auth_api[1:11] 22:06:12.293-22:06:13.289 Login with valid credentials returns access and refresh tokens"},{"id":15,"group":1,"content":"features/token_auth_api[2:24]","start":1793847972372,"end":1793847973219,"title":"features/token_auth_api[2:24] 22:06:12.372-22:06:13.219 Access protected endpoint with valid Bearer token"},{"id":16,"group":4,"content":"features/token_auth_api[3:32]","start":1793847972700,"end":1793847973265,"title":"features/token_auth_api[3:32] 22:06:12.700-22:06:13.265 Refresh token returns a new access token"},{"id":17,"group":2,"content":"features/token_auth_api[4:43]","start":1793847972701,"end":1793847973342,"title":"features/token_auth_api[4:43] 22:06:12.701-22:06:13.342 Login with invalid credentials returns error"},{"id":18,"group":1,"content":"features/token_auth_api[5:51]","start":1793847973223,"end":1793847973454,"title":"features/token_auth_api[5:51] 22:06:13.223-22:06:13.454 Access protected endpoint without token returns 401"},{"id":19,"group":4,"content":"features/token_auth_api[6:58]","start":1793847973266,"end":1793847973454,"title":"features/token_auth_api[6:58] 22:06:13.266-22:06:13.454 Access protected endpoint with invalid token returns 500"},{"id":20,"group":3,"content":"features/user_account_api[1:32]","start":1793847973290,"end":1793847975051,"title":"features/user_account_api[1:32] 22:06:13.290-22:06:15.051 POST to create a new user account"},{"id":21,"group":2,"content":"features/user_account_api[2:46]","start":1793847975067,"end":1793847975558,"title":"features/user_account_api[2:46] 22:06:15.067-22:06:15.558 GET user account detail by email"},{"id":22,"group":4,"content":"features/user_account_api[3:56]","start":1793847975566,"end":1793847977715,"title":"features/user_account_api[3:56] 22:06:15.566-22:06:17.715 PUT to update an existing user account"},{"id":23,"group":1,"content":"features/user_account_api[4:78]","start":1793847977716,"end":1793847978533,"title":"features/user_account_api[4:78] 22:06:17.716-22:06:18.533 DELETE to remove a user account"},{"id":24,"group":3,"content":"features/user_account_api[5:89]","start":1793847978550,"end":1793847979079,"title":"features/user_account_api[5:89] 22:06:18.550-22:06:19.079 GET user account after deletion returns not found"}];
+</script>
+    <script>
+      var container = document.getElementById('visualization');
+      var timeline = new vis.Timeline(container);
+      timeline.setOptions({groupOrder: 'content'});
+      timeline.setGroups(new vis.DataSet(groups));
+      timeline.setItems(new vis.DataSet(items));
+    </script>
+  </body>
+</html>

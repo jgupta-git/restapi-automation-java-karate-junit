@@ -1,0 +1,19 @@
+<testsuite failures="0" name="features/schema_validation.feature" skipped="0" tests="2" time="0.181567"><testcase classname="features.schema_validation" name="GET single product response matches JSON schema" time="0.08315"><system-out>Given url dummyJsonUrl + '/products/1' .................................... passed
+When method get ........................................................... passed
+Then status 200 ........................................................... passed
+And print response ........................................................ passed
+And match response contains {"id":1,"title":"Essence Mascara Lash Princess","price":9.99,"rating":2.56} . passed
+And match response contains { id: '#number', title: '#string', price: '#number', rating: '#number', tags: '#[] #string' } . passed
+And assert responseTime &lt; 3000 ............................................ passed
+</system-out></testcase>
+<testcase classname="features.schema_validation" name="GET all products list response matches JSON schema" time="0.098417"><system-out>Given url dummyJsonUrl + '/products' ...................................... passed
+When method get ........................................................... passed
+Then status 200 ........................................................... passed
+And print response ........................................................ passed
+And assert responseTime &lt; 3000 ............................................ passed
+And match header Content-Type contains 'application/json' ................. passed
+And match response == { "products": '#[]', "total": '#number', "skip": '#number', "limit": '#number' } . passed
+And match response.products contains deep {"id":1,"title":"Essence Mascara Lash Princess","price":9.99,"rating":2.56} . passed
+And match each response.products contains ................................. passed
+</system-out></testcase>
+</testsuite>

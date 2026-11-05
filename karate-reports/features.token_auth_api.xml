@@ -1,0 +1,48 @@
+<testsuite failures="0" name="features/token_auth_api.feature" skipped="0" tests="6" time="3.460731"><testcase classname="features.token_auth_api" name="Login with valid credentials returns access and refresh tokens" time="0.993044"><system-out>* def auth = callonce read('classpath:features/common/login.feature') { username: 'emilys', password: 'emilyspass' } . passed
+Given url dummyJsonUrl + '/auth/login' .................................... passed
+And request { username: 'emilys', password: 'emilyspass' } ................ passed
+When method post .......................................................... passed
+Then status 200 ........................................................... passed
+And print response ........................................................ passed
+And match response.accessToken == '#regex .+' ............................. passed
+And match response.refreshToken == '#regex .+' ............................ passed
+And print responseStatus .................................................. passed
+And print responseHeaders ................................................. passed
+And print responseTime .................................................... passed
+</system-out></testcase>
+<testcase classname="features.token_auth_api" name="Access protected endpoint with valid Bearer token" time="0.844395"><system-out>* def auth = callonce read('classpath:features/common/login.feature') { username: 'emilys', password: 'emilyspass' } . passed
+Given url dummyJsonUrl + '/auth/me' ....................................... passed
+And header Authorization = 'Bearer ' + auth.accessToken ................... passed
+When method get ........................................................... passed
+Then status 200 ........................................................... passed
+And match response contains { username: 'emilys', firstName: 'Emily', lastName: 'Johnson', email: 'emily.johnson@x.dummyjson.com' } . passed
+</system-out></testcase>
+<testcase classname="features.token_auth_api" name="Refresh token returns a new access token" time="0.565904"><system-out>* def auth = callonce read('classpath:features/common/login.feature') { username: 'emilys', password: 'emilyspass' } . passed
+Given url dummyJsonUrl + '/auth/refresh' .................................. passed
+And request { refreshToken: '#(auth.refreshToken)', expiresInMins: 30 } ... passed
+When method post .......................................................... passed
+Then status 200 ........................................................... passed
+And match response.accessToken == '#regex .+' ............................. passed
+And match response.refreshToken == '#regex .+' ............................ passed
+And match response.accessToken != auth.accessToken ........................ passed
+</system-out></testcase>
+<testcase classname="features.token_auth_api" name="Login with invalid credentials returns error" time="0.640048"><system-out>* def auth = callonce read('classpath:features/common/login.feature') { username: 'emilys', password: 'emilyspass' } . passed
+Given url dummyJsonUrl + '/auth/login' .................................... passed
+And request { username: 'emilys', password: 'wrongpassword' } ............. passed
+When method post .......................................................... passed
+Then status 400 ........................................................... passed
+And match response.message == 'Invalid credentials' ....................... passed
+</system-out></testcase>
+<testcase classname="features.token_auth_api" name="Access protected endpoint without token returns 401" time="0.232122"><system-out>* def auth = callonce read('classpath:features/common/login.feature') { username: 'emilys', password: 'emilyspass' } . passed
+Given url dummyJsonUrl + '/auth/me' ....................................... passed
+When method get ........................................................... passed
+Then status 401 ........................................................... passed
+And match response.message == 'Access Token is required' .................. passed
+</system-out></testcase>
+<testcase classname="features.token_auth_api" name="Access protected endpoint with invalid token returns 500" time="0.185218"><system-out>* def auth = callonce read('classpath:features/common/login.feature') { username: 'emilys', password: 'emilyspass' } . passed
+Given url dummyJsonUrl + '/auth/me' ....................................... passed
+And header Authorization = 'Bearer invalid.jwt.token' ..................... passed
+When method get ........................................................... passed
+Then status 500 ........................................................... passed
+</system-out></testcase>
+</testsuite>

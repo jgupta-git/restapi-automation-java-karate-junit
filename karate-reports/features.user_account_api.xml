@@ -1,0 +1,58 @@
+<testsuite failures="0" name="features/user_account_api.feature" skipped="0" tests="5" time="5.753393"><testcase classname="features.user_account_api" name="POST to create a new user account" time="1.7646"><properties><property name="parallel" value="false"/></properties><system-out>* def user = .............................................................. passed
+Given url aeUrl + 'deleteAccount' ......................................... passed
+And form field email = user.email ......................................... passed
+And form field password = user.password ................................... passed
+When method delete ........................................................ passed
+Given url aeUrl +'createAccount' .......................................... passed
+And form fields user ...................................................... passed
+When method post .......................................................... passed
+Then status 200 ........................................................... passed
+And print response ........................................................ passed
+And match response.responseCode == 201 .................................... passed
+And match response.message == "User created!" ............................. passed
+</system-out></testcase>
+<testcase classname="features.user_account_api" name="GET user account detail by email" time="0.490831"><properties><property name="parallel" value="false"/></properties><system-out>* def user = .............................................................. passed
+Given url aeUrl + 'getUserDetailByEmail' .................................. passed
+And param email = user.email .............................................. passed
+When method get ........................................................... passed
+Then status 200 ........................................................... passed
+And print response ........................................................ passed
+And match response.responseCode == 200 .................................... passed
+And match response.user.email == "jg_qa_create@testmail.com" .............. passed
+</system-out></testcase>
+<testcase classname="features.user_account_api" name="PUT to update an existing user account" time="2.148648"><properties><property name="parallel" value="false"/></properties><system-out>* def user = .............................................................. passed
+* set user ................................................................ passed
+Given url aeUrl + 'updateAccount' ......................................... passed
+And form fields user ...................................................... passed
+When method put ........................................................... passed
+Then status 200 ........................................................... passed
+And print response ........................................................ passed
+And match response.responseCode == 200 .................................... passed
+And match response.message == "User updated!" ............................. passed
+Given url aeUrl + 'getUserDetailByEmail' .................................. passed
+And param email = user.email .............................................. passed
+When method get ........................................................... passed
+Then status 200 ........................................................... passed
+And print response ........................................................ passed
+And match response.user contains { name: 'UpdatedUser', company: 'NewCorp' } . passed
+</system-out></testcase>
+<testcase classname="features.user_account_api" name="DELETE to remove a user account" time="0.82035"><properties><property name="parallel" value="false"/></properties><system-out>* def user = .............................................................. passed
+Given url aeUrl + 'deleteAccount' ......................................... passed
+And form field email = user.email ......................................... passed
+And form field password =  user.password .................................. passed
+When method delete ........................................................ passed
+Then status 200 ........................................................... passed
+And print response ........................................................ passed
+And match response.responseCode == 200 .................................... passed
+And match response.message == "Account deleted!" .......................... passed
+</system-out></testcase>
+<testcase classname="features.user_account_api" name="GET user account after deletion returns not found" time="0.528965"><properties><property name="parallel" value="false"/></properties><system-out>* def user = .............................................................. passed
+Given url aeUrl + 'getUserDetailByEmail' .................................. passed
+And param email = user.email .............................................. passed
+When method get ........................................................... passed
+Then status 200 ........................................................... passed
+And print response ........................................................ passed
+And match response.responseCode == 404 .................................... passed
+And match response.message == "Account not found with this email, try another email!" . passed
+</system-out></testcase>
+</testsuite>
