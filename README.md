@@ -86,6 +86,8 @@ restapi-automation-java-karate-junit/
         └── resources/
             ├── karate-config.js                    # Base URLs, loaded before every scenario
             └── features/
+                ├── common/
+                │   └── login.feature               # Reusable login helper, called with callonce
                 ├── fuzzy_matching.feature          # Fuzzy markers and value rules
                 ├── query_params.feature            # Query parameters and Scenario Outline
                 ├── schema_validation.feature       # Schema checks, headers, response time
@@ -126,6 +128,7 @@ function fn() {
 
 ### Feature Files (src/test/resources/features/)
 
+* common/login.feature — Reusable login helper (tagged `@ignore`, so it never runs as a test on its own)
 * token\_auth\_api.feature — Login, Bearer token access, token refresh, and auth errors
 * user\_account\_api.feature — Full account lifecycle, with the update verified by reading the account back
 * schema\_validation.feature — Type checks on single and list responses, content type, response time
@@ -221,15 +224,27 @@ The user account is defined once in `Background`. Karate runs `Background` befor
     When method put
 ```
 
-### Chaining Calls
+### Reusable Login with `callonce`
 
-Values from one response feed the next request through plain variables:
+Login lives in one helper feature. `token_auth_api.feature` calls it from `Background`:
 
 ```gherkin
-    * def token = response.accessToken
-    Given url dummyJsonUrl + '/auth/me'
-    And header Authorization = 'Bearer ' + token
+  Background:
+    * def auth = callonce read('classpath:features/common/login.feature') { username: 'emilys', password: 'emilyspass' }
 ```
+
+`callonce` runs the login once per feature and reuses the result in every scenario. Scenarios that need a logged-in user use `auth.accessToken` and `auth.refreshToken`:
+
+```gherkin
+    Given url dummyJsonUrl + '/auth/me'
+    And header Authorization = 'Bearer ' + auth.accessToken
+```
+
+The scenarios that test login itself (valid and invalid credentials) still call the login endpoint directly.
+
+### Chaining Calls
+
+Values from one response feed the next request through plain variables, for example the access token above, or the refresh token sent to `/auth/refresh`.
 
 ---
 
@@ -283,6 +298,7 @@ The same API tests are implemented in both projects:
 |Reusable response checks|`ResponseSpecBuilder`|Plain `match` lines, or a shared feature called with `call`|
 |Response time|`time(lessThan(...))`|`assert responseTime < 3000`|
 |Chaining calls|Values stored in Java fields|Variables with `def`|
+|Reusable steps|Shared step definition methods in Java|Helper feature called with `call` / `callonce`|
 |Reports|maven-cucumber-reporting plugin|Built-in HTML report with every request and response|
 
 ---

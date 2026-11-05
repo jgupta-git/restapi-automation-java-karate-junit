@@ -4,6 +4,9 @@ Feature: Token-based Authentication API (DummyJSON)
   I want to verify JWT token authentication flows
   So that login, token-protected access, and token refresh work correctly
 
+  Background:
+    * def auth = callonce read('classpath:features/common/login.feature') { username: 'emilys', password: 'emilyspass' }
+
   @Scenario-1 @positive @smoke
   Scenario: Login with valid credentials returns access and refresh tokens
     Given url dummyJsonUrl + '/auth/login'
@@ -19,34 +22,22 @@ Feature: Token-based Authentication API (DummyJSON)
 
   @Scenario-2 @positive
   Scenario: Access protected endpoint with valid Bearer token
-    Given url dummyJsonUrl + '/auth/login'
-    And request { username: 'emilys', password: 'emilyspass' }
-    When method post
-    Then status 200
-    * def token = response.accessToken
     Given url dummyJsonUrl + '/auth/me'
-    And header Authorization = 'Bearer ' + token
+    And header Authorization = 'Bearer ' + auth.accessToken
     When method get
     Then status 200
     And match response contains { username: 'emilys', firstName: 'Emily', lastName: 'Johnson', email: 'emily.johnson@x.dummyjson.com' }
 
   @Scenario-3 @positive
   Scenario: Refresh token returns a new access token
-    # login and capture the original tokens
-    Given url dummyJsonUrl + '/auth/login'
-    And request { username: 'emilys', password: 'emilyspass' }
-    When method post
-    Then status 200
-    * def oldAccessToken = response.accessToken
-    * def oldRefreshToken = response.refreshToken
     # refresh with a different expiry so the new token can't be identical
     Given url dummyJsonUrl + '/auth/refresh'
-    And request { refreshToken: '#(oldRefreshToken)', expiresInMins: 30 }
+    And request { refreshToken: '#(auth.refreshToken)', expiresInMins: 30 }
     When method post
     Then status 200
     And match response.accessToken == '#regex .+'
     And match response.refreshToken == '#regex .+'
-    And match response.accessToken != oldAccessToken
+    And match response.accessToken != auth.accessToken
 
   @Scenario-4 @negative
   Scenario: Login with invalid credentials returns error
