@@ -162,7 +162,7 @@ function fn() {
 
 ## Test Reports
 
-Karate writes the reports to `target/karate-reports/`:
+**[Karate HTML Report](https://jgupta-git.github.io/restapi-automation-java-karate-junit/karate-reports/karate-summary.html)**
 
 * **karate-summary.html** — one combined summary of every feature, with pass/fail counts and timings
 * **Tags** view — results grouped by tag (`@smoke`, `@positive`, `@negative`, ...)
