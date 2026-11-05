@@ -7,7 +7,8 @@ Karate 1.5.2 | JUnit 5 | Java 17 | Maven | REST API | DummyJSON | AutomationExer
 Test Targets: [DummyJSON](https://dummyjson.com) and [AutomationExercise API](https://automationexercise.com/api_list)  
 Testing Framework: Karate with the JUnit 5 runner  
 Language: Gherkin feature files (no Java step definitions)  
-Architecture: one feature file per API area, one JUnit runner per feature  
+Architecture: one feature file per API area, a single parallel runner for the full suite, plus one JUnit runner per feature for running features individually  
+Execution: scenarios run in parallel (4 threads by default, configurable with `-Dthreads`)  
 Test Organization: Karate scenarios with built-in HTTP steps, `match` assertions, and fuzzy markers  
 Test Data: inline JSON in the feature files; the user account payload is shared through `Background`  
 Scope: a selection of features from the REST Assured suite, chosen to show the differences between the two tools
@@ -78,6 +79,7 @@ restapi-automation-java-karate-junit/
     └── test/
         ├── java/
         │   └── runner/
+        │       ├── ParallelRunner.java             # Runs all features in parallel (used by Maven and Jenkins)
         │       ├── FuzzyMatchingRunner.java        # Runs fuzzy_matching.feature
         │       ├── QueryParamsRunner.java          # Runs query_params.feature
         │       ├── SchemaValidationRunner.java     # Runs schema_validation.feature
@@ -99,7 +101,28 @@ restapi-automation-java-karate-junit/
 
 ### Runners (src/test/java/runner/)
 
-Each runner runs one feature file with the JUnit 5 `@Karate.Test` annotation:
+**ParallelRunner.java** runs the whole suite. Maven and Jenkins use this runner:
+
+```java
+class ParallelRunner {
+
+    @Test
+    void runAllFeatures() {
+        int threads = Integer.parseInt(System.getProperty("threads", "4"));
+        Results results = Runner.path("classpath:features")
+                .tags("~@ignore")          // skip helper features like common/login.feature
+                .outputJunitXml(true)      // JUnit XML results for Jenkins
+                .parallel(threads);
+        assertEquals(0, results.getFailCount(), results.getErrorMessages());
+    }
+}
+```
+
+* Runs scenarios in parallel inside one JVM, so Karate builds a single combined report
+* The thread count defaults to 4 and can be changed with `-Dthreads`
+* Fails the JUnit test if any scenario fails, so Maven and Jenkins report the build as failed
+
+**Feature runners** run one feature file each, with the JUnit 5 `@Karate.Test` annotation. Use them to run a single feature from the IDE:
 
 ```java
 class TokenAuthApiRunner {
@@ -139,9 +162,13 @@ function fn() {
 
 ## Test Reports
 
-Karate writes an HTML report for every feature to `target/karate-reports/`. Each step shows the request URL, headers, request body and response, so the report documents exactly what the API returned.
+Karate writes the reports to `target/karate-reports/`:
 
-When the suite runs with the `regression` profile, each runner runs in its own JVM, so open the per-feature reports in `target/karate-reports/` for the full results. Jenkins combines the results from all runners in its **Test Result** page.
+* **karate-summary.html** — one combined summary of every feature, with pass/fail counts and timings
+* **Tags** view — results grouped by tag (`@smoke`, `@positive`, `@negative`, ...)
+* **Timeline** view — shows which scenarios ran on which thread, and when
+* **Per-feature reports** — each step shows the request URL, headers, request body and response, so the report documents exactly what the API returned
+* **JUnit XML** — `*.xml` files that Jenkins reads for its **Test Result** page and trend graph
 
 ## Quick Start
 
@@ -175,7 +202,15 @@ To use Eclipse: **File → Import → Maven → Existing Maven Projects**, selec
 mvn clean test -P regression
 ```
 
-The `regression` profile runs every `*Runner.java` class, with up to 4 runners at a time (`forkCount` 4). Running `mvn test` without the profile runs no tests, because Maven only picks up `*Test` classes by default.
+The `regression` profile runs `ParallelRunner.java`, which runs every feature in parallel. Running `mvn test` without the profile runs no tests, because Maven only picks up `*Test` classes by default.
+
+#### Change the Number of Threads
+
+```cmd
+mvn clean test -P regression -Dthreads=8
+```
+
+The default is 4. These tests call free public APIs, so a modest thread count avoids rate limiting.
 
 #### Run One Feature
 
@@ -207,7 +242,14 @@ The account scenarios run in file order and depend on each other:
 4. Delete — deletes the account
 5. Get after delete — confirms the account no longer exists
 
-Run the feature as a whole. Each runner runs its scenarios in order, so this sequence is safe with the `regression` profile.
+Karate runs scenarios in parallel, so this feature is tagged `@parallel=false`:
+
+```gherkin
+@account @functional @parallel=false
+Feature: User Account API
+```
+
+Its scenarios then run in order on one thread, while the other features still run in parallel. Run the feature as a whole; running one of these scenarios alone can fail if it needs the account an earlier scenario creates.
 
 ### Shared Payload with Background and `set`
 
@@ -299,7 +341,8 @@ The same API tests are implemented in both projects:
 |Response time|`time(lessThan(...))`|`assert responseTime < 3000`|
 |Chaining calls|Values stored in Java fields|Variables with `def`|
 |Reusable steps|Shared step definition methods in Java|Helper feature called with `call` / `callonce`|
-|Reports|maven-cucumber-reporting plugin|Built-in HTML report with every request and response|
+|Reports|maven-cucumber-reporting plugin merges the JSON from all runners after the run|Built-in HTML report with every request and response, built by the runner during the run|
+|Parallel runs|Maven surefire forks, one runner per JVM (feature level)|`Runner.parallel()` in one JVM (scenario level); `@parallel=false` keeps dependent scenarios in order|
 
 ---
 
@@ -309,7 +352,7 @@ The same API tests are implemented in both projects:
 
 * `karate-junit5` — the only test dependency; it brings in Karate and JUnit 5
 * `maven.compiler.source` / `target` 17 — Karate 1.5 requires Java 17
-* `regression` profile — runs every `*Runner.java` class with `forkCount` 4
+* `regression` profile — runs only `ParallelRunner.java`, so the feature runners don't run a second time
 
 ```xml
 <profile>
@@ -317,13 +360,13 @@ The same API tests are implemented in both projects:
     ...
     <configuration>
         <includes>
-            <include>**/*Runner.java</include>
+            <include>**/ParallelRunner.java</include>
         </includes>
-        <forkCount>4</forkCount>
-        <reuseForks>true</reuseForks>
     </configuration>
 </profile>
 ```
+
+Parallelism comes from `Runner.parallel()` inside `ParallelRunner`, not from Maven forks. One JVM runs the whole suite, so Karate can build one combined report.
 
 ---
 
@@ -333,9 +376,22 @@ The `Jenkinsfile` runs two stages and a post step:
 
 1. **Checkout** — pulls the repository
 2. **Run Karate tests** — runs `mvn clean test -P regression`
-3. **Post** — publishes the JUnit results from `target/surefire-reports`, publishes the Karate report, and archives every feature report from `target/karate-reports`
+3. **Post** — publishes the JUnit results from `target/karate-reports/*.xml`, publishes the combined Karate report, and archives everything in `target/karate-reports`
 
-Create a **Pipeline** job in Jenkins, set **Pipeline script from SCM** to Git, and point it at this repository. The pipeline uses Windows batch steps (`bat`), and the `JDK17` and `Maven` tool names must match **Manage Jenkins → Tools**. The HTML Publisher plugin is required for the Karate report link.
+```groovy
+tools {
+    jdk 'JDK17'      // must match the JDK name in Manage Jenkins > Tools
+    maven 'Maven3'   // must match the Maven name in Manage Jenkins > Tools
+}
+```
+
+Setup:
+
+* Create a **Pipeline** job, set **Pipeline script from SCM** to Git, and point it at this repository
+* In **Manage Jenkins → Tools**, add a JDK named `JDK17` that points to a Java 17+ JDK. Maven uses the machine's `JAVA_HOME` otherwise, which may be an older Java and fails with `invalid target release: 17`
+* The Maven installation must be named `Maven3`
+* The pipeline uses Windows batch steps (`bat`)
+* The HTML Publisher plugin is required for the Karate report link
 
 ---
 

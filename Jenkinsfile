@@ -15,14 +15,14 @@ pipeline {
 
         stage('Run Karate tests') {
             steps {
-                bat 'mvn clean test -P regression'
+                bat 'mvn clean test -P regression -Dthreads=4'
             }
         }
     }
 
     post {
         always {
-            junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
+            junit allowEmptyResults: true, testResults: 'target/karate-reports/*.xml'
             publishHTML(target: [
                 reportDir: 'target/karate-reports',
                 reportFiles: 'karate-summary.html',

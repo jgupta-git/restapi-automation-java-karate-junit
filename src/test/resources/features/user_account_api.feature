@@ -1,4 +1,4 @@
-@account @functional
+@account @functional @parallel=false
 Feature: User Account API
   As a QA engineer
   I want to verify the CRUD operations for user accounts
